@@ -28,20 +28,26 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements.txt  # 确保 requirements.txt 在仓库根目录下
 
-      # 4. 运行测试
+      # 4. 安装 Allure 命令行工具
+      - name: Install Allure command line
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y allure
+
+      # 5. 运行测试
       - name: Run tests
         run: |
           pytest --alluredir=./reports/allure_results
 
-      # 5. 生成 Allure 报告
+      # 6. 生成 Allure 报告
       - name: Generate Allure report
         if: always()  # 即使测试失败也生成报告
         run: |
           allure generate ./reports/allure_results -o ./reports/allure_report --clean
 
-      # 6. 上传 Allure 报告为 Artifact
+      # 7. 上传 Allure 报告为 Artifact
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
         with:
