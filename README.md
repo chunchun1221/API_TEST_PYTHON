@@ -8,7 +8,6 @@
 
 ---
 
-```markdown
 # 接口自动化测试框架
 
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
