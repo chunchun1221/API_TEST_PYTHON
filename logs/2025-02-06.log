@@ -1,0 +1,118 @@
+2025-02-06 22:24:22,228 - api_test - DEBUG - debug
+2025-02-06 22:24:22,228 - api_test - INFO - info
+2025-02-06 22:24:22,228 - api_test - WARNING - warning
+2025-02-06 22:24:22,228 - api_test - ERROR - error
+2025-02-06 22:24:22,228 - api_test - CRITICAL - critical
+2025-02-06 22:28:29,542 - api_test - DEBUG - This is a debug message.
+2025-02-06 22:28:29,542 - api_test - INFO - This is an info message.
+2025-02-06 22:28:29,542 - api_test - WARNING - This is a warning message.
+2025-02-06 22:28:29,542 - api_test - ERROR - This is an error message.
+2025-02-06 22:28:29,543 - api_test - CRITICAL - This is a critical message.
+2025-02-06 22:35:25,594 - api_test - INFO - GET https://api.example.com/v1/
+2025-02-06 22:35:25,595 - api_test - ERROR - GET https://api.example.com/v1/ - requests.sessions.Session.request() got multiple values for keyword argument 'timeout'
+2025-02-06 22:37:14,582 - api_test - INFO - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/
+2025-02-06 22:37:14,583 - api_test - ERROR - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/ - requests.sessions.Session.request() got multiple values for keyword argument 'timeout'
+2025-02-06 22:38:58,719 - api_test - INFO - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/
+2025-02-06 22:38:59,234 - api_test - ERROR - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/ - 500 Server Error: Internal Server Error for url: http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/
+2025-02-06 22:38:59,234 - api_test - INFO - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/ - 500
+2025-02-06 22:38:59,235 - api_test - DEBUG - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/ - getWeather/ Web 服务方法名无效。
+
+2025-02-06 22:38:59,235 - api_test - DEBUG - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/ - {'Connection': 'close', 'Content-Length': '42', 'Cache-Control': 'private', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Thu, 06 Feb 2025 14:39:02 GMT', 'Server': 'Microsoft-IIS/7.5', 'X-Aspnet-Version': '2.0.50727', 'X-Powered-By': 'ASP.NET'}
+2025-02-06 22:38:59,235 - api_test - DEBUG - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/ - <RequestsCookieJar[]>
+2025-02-06 22:38:59,236 - api_test - DEBUG - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/ - http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getWeather/
+2025-02-06 22:39:53,686 - api_test - INFO - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/
+2025-02-06 22:39:54,217 - api_test - ERROR - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/ - 500 Server Error: Internal Server Error for url: http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/
+2025-02-06 22:39:54,218 - api_test - INFO - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/ - 500
+2025-02-06 22:39:54,218 - api_test - DEBUG - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/ - getRegionProvince/ Web 服务方法名无效。
+
+2025-02-06 22:39:54,219 - api_test - DEBUG - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/ - {'Connection': 'close', 'Content-Length': '49', 'Cache-Control': 'private', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Thu, 06 Feb 2025 14:39:57 GMT', 'Server': 'Microsoft-IIS/7.5', 'X-Aspnet-Version': '2.0.50727', 'X-Powered-By': 'ASP.NET'}
+2025-02-06 22:39:54,219 - api_test - DEBUG - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/ - <RequestsCookieJar[]>
+2025-02-06 22:39:54,219 - api_test - DEBUG - GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/ - http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince/
+2025-02-06 22:42:05,925 - api_test - INFO - Request: GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvincehttp://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince
+2025-02-06 22:42:06,038 - api_test - INFO - Response: 400
+2025-02-06 22:47:37,586 - api_test - INFO - Request: POST http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvincehttps://test.skywayplatform.com/manage/pums-manage/manage/auth/ossLogin
+2025-02-06 22:47:37,705 - api_test - INFO - Response: 400
+2025-02-06 22:48:55,995 - api_test - INFO - Request: POST http://test.skywayplatform.comhttps://test.skywayplatform.com/manage/pums-manage/manage/auth/ossLogin
+2025-02-06 22:48:56,853 - api_test - INFO - Response: 502
+2025-02-06 22:49:10,147 - api_test - INFO - Request: POST http://test.skywayplatform.com/manage/pums-manage/manage/auth/ossLogin
+2025-02-06 22:49:13,281 - api_test - INFO - Response: 502
+2025-02-06 22:50:00,739 - api_test - INFO - Request: POST http://test.skywayplatform.com/manage/pums-manage/manage/auth/ossLogin
+2025-02-06 22:50:02,364 - api_test - INFO - Response: 200
+2025-02-06 22:52:34,232 - api_test - INFO - Request: POST http://test.skywayplatform.com/manage/pums-manage/manage/auth/ossLogin
+2025-02-06 22:52:35,549 - api_test - INFO - Response: 200
+2025-02-06 22:54:12,979 - api_test - INFO - Request: POST http://test.skywayplatform.com/manage/pums-manage/manage/auth/ossLogin
+2025-02-06 22:54:16,279 - api_test - INFO - Response: 502
+2025-02-06 22:54:44,889 - api_test - INFO - Request: POST http://test.skywayplatform.com/manage/pums-manage/manage/auth/ossLogin
+2025-02-06 22:54:46,766 - api_test - INFO - Response: 200
+2025-02-06 22:55:44,424 - api_test - INFO - Request: POST http://test.skywayplatform.com/manage/pums-manage/manage/auth/ossLogin
+2025-02-06 22:55:50,696 - api_test - INFO - Response: 200
+2025-02-06 22:57:18,422 - api_test - INFO - Request: GET https://movie.douban.com/top250
+2025-02-06 22:57:18,733 - api_test - INFO - Response: 418
+2025-02-06 22:57:50,712 - api_test - INFO - Request: GET https://movie.douban.com/top250
+2025-02-06 22:57:51,096 - api_test - INFO - Response: 418
+2025-02-06 22:58:28,989 - api_test - INFO - Request: GET https://movie.douban.com/top250
+2025-02-06 22:58:29,266 - api_test - INFO - Response: 418
+2025-02-06 22:58:29,267 - api_test - ERROR - Request failed: 418
+2025-02-06 22:58:29,267 - api_test - ERROR - Request failed: Request failed: 418
+2025-02-06 23:00:10,915 - api_test - INFO - Request: GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getSupportCityString
+2025-02-06 23:00:11,030 - api_test - INFO - Response: 500
+2025-02-06 23:00:58,497 - api_test - INFO - Request: POST http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getSupportCityString
+2025-02-06 23:00:58,606 - api_test - INFO - Response: 500
+2025-02-06 23:01:53,022 - api_test - INFO - Request: POST http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getSupportCityString
+2025-02-06 23:01:53,138 - api_test - INFO - Response: 500
+2025-02-06 23:02:17,218 - api_test - INFO - Request: POST http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getSupportCityString
+2025-02-06 23:02:17,347 - api_test - INFO - Response: 200
+2025-02-06 23:03:34,646 - api_test - INFO - Request: POST http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getSupportCityString
+2025-02-06 23:03:34,753 - api_test - INFO - Response: 200
+2025-02-06 23:03:34,754 - api_test - INFO - Request: GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince
+2025-02-06 23:03:34,878 - api_test - INFO - Response: 200
+2025-02-06 23:03:51,133 - api_test - INFO - Request: POST http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getSupportCityString
+2025-02-06 23:03:51,242 - api_test - INFO - Response: 200
+2025-02-06 23:03:51,244 - api_test - INFO - Request: GET http://ws.webxml.com.cn/WebServices/WeatherWS.asmx/getRegionProvince
+2025-02-06 23:03:51,334 - api_test - INFO - Response: 200
+2025-02-06 23:21:24,451 - api_test - INFO - Request: POST https://reqres.in/apilogin
+2025-02-06 23:21:26,113 - api_test - INFO - Response: 404
+2025-02-06 23:23:55,329 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:23:56,269 - api_test - INFO - Response: 400
+2025-02-06 23:23:56,270 - api_test - INFO - Request: GET https://reqres.in/api/users
+2025-02-06 23:23:56,527 - api_test - INFO - Response: 200
+2025-02-06 23:25:06,475 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:25:07,550 - api_test - INFO - Response: 400
+2025-02-06 23:25:07,550 - api_test - INFO - Request: GET https://reqres.in/api/users
+2025-02-06 23:25:08,425 - api_test - INFO - Response: 200
+2025-02-06 23:26:08,839 - api_test - INFO - Testing login with admin/password
+2025-02-06 23:26:08,840 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:26:09,874 - api_test - INFO - Response: 400
+2025-02-06 23:26:09,985 - api_test - INFO - Testing login with invalid_user/password
+2025-02-06 23:26:09,985 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:26:10,566 - api_test - INFO - Response: 400
+2025-02-06 23:26:10,572 - api_test - INFO - Testing login with admin/wrong_password
+2025-02-06 23:26:10,573 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:26:11,094 - api_test - INFO - Response: 400
+2025-02-06 23:27:30,438 - api_test - INFO - Testing login with admin/password
+2025-02-06 23:27:30,438 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:27:31,794 - api_test - INFO - Response: 400
+2025-02-06 23:27:31,795 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-06 23:27:31,795 - api_test - ERROR - Request failed: Request failed with status code 400
+2025-02-06 23:27:31,905 - api_test - INFO - Testing login with invalid_user/password
+2025-02-06 23:27:31,905 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:27:32,684 - api_test - INFO - Response: 400
+2025-02-06 23:27:32,684 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-06 23:27:32,685 - api_test - ERROR - Request failed: Request failed with status code 400
+2025-02-06 23:27:32,694 - api_test - INFO - Testing login with admin/wrong_password
+2025-02-06 23:27:32,695 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:27:33,170 - api_test - INFO - Response: 400
+2025-02-06 23:27:33,170 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-06 23:27:33,171 - api_test - ERROR - Request failed: Request failed with status code 400
+2025-02-06 23:28:17,389 - api_test - INFO - Testing login with admin/password
+2025-02-06 23:28:17,389 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:28:18,454 - api_test - INFO - Response: 400
+2025-02-06 23:28:18,454 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-06 23:28:18,567 - api_test - INFO - Testing login with invalid_user/password
+2025-02-06 23:28:18,568 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:28:19,090 - api_test - INFO - Response: 400
+2025-02-06 23:28:19,091 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-06 23:28:19,097 - api_test - INFO - Testing login with admin/wrong_password
+2025-02-06 23:28:19,098 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-06 23:28:19,863 - api_test - INFO - Response: 400
+2025-02-06 23:28:19,864 - api_test - ERROR - Request failed with status code {"error":"user not found"}
