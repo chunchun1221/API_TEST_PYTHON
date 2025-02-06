@@ -116,3 +116,190 @@
 2025-02-06 23:28:19,098 - api_test - INFO - Request: POST https://reqres.in/api/login
 2025-02-06 23:28:19,863 - api_test - INFO - Response: 400
 2025-02-06 23:28:19,864 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 00:50:26,876 - api_test - ERROR - 文件路径为空,会使用默认路径
+2025-02-07 00:50:26,877 - api_test - ERROR - 读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:1,chunk_size:100
+2025-02-07 00:51:08,703 - api_test - ERROR - 文件路径为空,会使用默认路径
+2025-02-07 00:51:08,703 - api_test - ERROR - read_excel() got an unexpected keyword argument 'chunksize',读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:1,chunk_size:100
+2025-02-07 00:51:25,344 - api_test - ERROR - 文件路径为空,会使用默认路径
+2025-02-07 00:51:25,346 - api_test - ERROR - [Errno 2] No such file or directory: 'D:\\projects\\API_autotest\\untils\\data\\test_data.xlsx',读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:None,chunk_size:None
+2025-02-07 00:51:50,152 - api_test - ERROR - 文件路径为空,会使用默认路径
+2025-02-07 00:51:50,153 - api_test - ERROR - [Errno 2] No such file or directory: 'D:\\projects\\API_autotest\\untils\\..\\date\\casedata.xlsx',读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:None,chunk_size:None
+2025-02-07 00:52:13,694 - api_test - ERROR - 文件路径为空,会使用默认路径
+2025-02-07 00:52:13,696 - api_test - ERROR - [Errno 2] No such file or directory: 'D:\\projects\\API_autotest\\untils\\.\\date\\casedata.xlsx',读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:None,chunk_size:None
+2025-02-07 00:52:32,574 - api_test - ERROR - 文件路径为空,会使用默认路径
+2025-02-07 00:52:32,576 - api_test - ERROR - [Errno 2] No such file or directory: 'D:\\projects\\API_autotest\\untils\\.\\data\\casedata.xlsx',读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:None,chunk_size:None
+2025-02-07 00:53:08,352 - api_test - ERROR - 文件路径为空,会使用默认路径
+2025-02-07 00:53:08,352 - api_test - INFO - 当前路径为:D:\projects\API_autotest\untils
+2025-02-07 00:53:08,353 - api_test - ERROR - [Errno 2] No such file or directory: 'D:\\projects\\API_autotest\\untils\\.\\data\\casedata.xlsx',读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:None,chunk_size:None
+2025-02-07 00:53:21,535 - api_test - ERROR - 文件路径为空,会使用默认路径
+2025-02-07 00:53:21,536 - api_test - INFO - 当前路径为:D:\projects\API_autotest\untils
+2025-02-07 00:53:21,536 - api_test - INFO - 文件路径为:D:\projects\API_autotest\untils\.\data\casedata.xlsx
+2025-02-07 00:53:21,538 - api_test - ERROR - [Errno 2] No such file or directory: 'D:\\projects\\API_autotest\\untils\\.\\data\\casedata.xlsx',读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:None,chunk_size:None
+2025-02-07 00:55:20,621 - api_test - ERROR - 文件路径为空, 将使用默认路径
+2025-02-07 00:55:20,621 - api_test - INFO - 默认文件路径为: D:\projects\API_autotest\untils\data\casedata.xlsx
+2025-02-07 00:55:20,622 - api_test - ERROR - [Errno 2] No such file or directory: 'D:\\projects\\API_autotest\\untils\\data\\casedata.xlsx',读取excel失败,sheet_name:Login,user_cols:['账号名', '密码', '预期结果定位', '预期结果'],skip_rows:None,chunk_size:None
+2025-02-07 00:57:14,745 - api_test - ERROR - 文件路径为空, 将使用默认路径
+2025-02-07 00:57:14,745 - api_test - INFO - 默认文件路径为: D:\projects\API_autotest\data\casedata.xlsx
+2025-02-07 00:58:19,239 - api_test - INFO - 文件路径为空, 将使用默认路径
+2025-02-07 00:58:19,240 - api_test - INFO - 默认文件路径为: D:\projects\API_autotest\data\casedata.xlsx
+2025-02-07 00:59:01,857 - api_test - INFO - 文件路径为空, 将使用默认路径
+2025-02-07 00:59:01,857 - api_test - INFO - 默认文件路径为: D:\projects\API_autotest\data\casedata.xlsx
+2025-02-07 00:59:02,533 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 00:59:02,534 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 00:59:02,535 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 00:59:02,536 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 00:59:02,538 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 00:59:02,538 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 00:59:02,539 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 00:59:02,541 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 00:59:02,542 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果定位', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,421 - api_test - INFO - 文件路径为空, 将使用默认路径
+2025-02-07 01:04:04,422 - api_test - INFO - 默认文件路径为: D:\projects\API_autotest\data\casedata.xlsx
+2025-02-07 01:04:04,891 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,892 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,893 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,894 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,894 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,894 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,895 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,895 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,896 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:04:04,908 - api_test - INFO - Testing login with admin/d5eFYHi!PNf3Bk~
+2025-02-07 01:04:04,909 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:05,929 - api_test - INFO - Response: 400
+2025-02-07 01:04:05,930 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:04:06,202 - api_test - INFO - Testing login with     /d5eFYHi!PNf4Bk~
+2025-02-07 01:04:06,204 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:06,955 - api_test - INFO - Response: 400
+2025-02-07 01:04:06,955 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:04:06,963 - api_test - INFO - Testing login with 11/d5eFYHi!PNf5Bk~
+2025-02-07 01:04:06,964 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:07,468 - api_test - INFO - Response: 400
+2025-02-07 01:04:07,468 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:04:07,475 - api_test - INFO - Testing login with 3nU17FmDUJbOnBnZDTLcSsNThY7z43J4TE8JYbUgqyG97QkmVoWoCwqlKgDgFq3pD/d5eFYHi!PNf6Bk~
+2025-02-07 01:04:07,476 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:08,258 - api_test - INFO - Response: 400
+2025-02-07 01:04:08,258 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:04:08,264 - api_test - INFO - Testing login with   /d5eFYHi!PNf7Bk~
+2025-02-07 01:04:08,265 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:09,113 - api_test - INFO - Response: 400
+2025-02-07 01:04:09,113 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:04:09,118 - api_test - INFO - Testing login with admin/123
+2025-02-07 01:04:09,119 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:09,691 - api_test - INFO - Response: 400
+2025-02-07 01:04:09,691 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:04:09,699 - api_test - INFO - Testing login with 111/111
+2025-02-07 01:04:09,699 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:10,212 - api_test - INFO - Response: 400
+2025-02-07 01:04:10,213 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:04:10,221 - api_test - INFO - Testing login with admin/1234
+2025-02-07 01:04:10,222 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:10,741 - api_test - INFO - Response: 400
+2025-02-07 01:04:10,741 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:04:10,751 - api_test - INFO - Testing login with admin/53APng01zzkCGGjWSiLQTrcJoF77HCalS
+2025-02-07 01:04:10,752 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:04:11,787 - api_test - INFO - Response: 400
+2025-02-07 01:04:11,789 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:30,304 - api_test - INFO - 文件路径为空, 将使用默认路径
+2025-02-07 01:13:30,305 - api_test - INFO - 默认文件路径为: D:\projects\API_autotest\data\casedata.xlsx
+2025-02-07 01:13:30,711 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,712 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,712 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,713 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,714 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,714 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,715 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,715 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,715 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:13:30,725 - api_test - INFO - Testing login with admin/d5eFYHi!PNf3Bk~
+2025-02-07 01:13:30,725 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:32,079 - api_test - INFO - Response: 400
+2025-02-07 01:13:32,080 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:32,333 - api_test - INFO - Testing login with     /d5eFYHi!PNf4Bk~
+2025-02-07 01:13:32,334 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:33,485 - api_test - INFO - Response: 400
+2025-02-07 01:13:33,486 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:33,495 - api_test - INFO - Testing login with 11/d5eFYHi!PNf5Bk~
+2025-02-07 01:13:33,496 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:34,416 - api_test - INFO - Response: 400
+2025-02-07 01:13:34,416 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:34,429 - api_test - INFO - Testing login with 3nU17FmDUJbOnBnZDTLcSsNThY7z43J4TE8JYbUgqyG97QkmVoWoCwqlKgDgFq3pD/d5eFYHi!PNf6Bk~
+2025-02-07 01:13:34,429 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:34,952 - api_test - INFO - Response: 400
+2025-02-07 01:13:34,953 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:34,965 - api_test - INFO - Testing login with   /d5eFYHi!PNf7Bk~
+2025-02-07 01:13:34,965 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:35,481 - api_test - INFO - Response: 400
+2025-02-07 01:13:35,482 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:35,492 - api_test - INFO - Testing login with admin/123
+2025-02-07 01:13:35,493 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:36,013 - api_test - INFO - Response: 400
+2025-02-07 01:13:36,014 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:36,044 - api_test - INFO - Testing login with 111/111
+2025-02-07 01:13:36,045 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:36,586 - api_test - INFO - Response: 400
+2025-02-07 01:13:36,587 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:36,598 - api_test - INFO - Testing login with admin/1234
+2025-02-07 01:13:36,598 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:37,117 - api_test - INFO - Response: 400
+2025-02-07 01:13:37,118 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:13:37,127 - api_test - INFO - Testing login with admin/53APng01zzkCGGjWSiLQTrcJoF77HCalS
+2025-02-07 01:13:37,128 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:13:37,970 - api_test - INFO - Response: 400
+2025-02-07 01:13:37,970 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:51,204 - api_test - INFO - 文件路径为空, 将使用默认路径
+2025-02-07 01:20:51,205 - api_test - INFO - 默认文件路径为: D:\projects\API_autotest\data\casedata.xlsx
+2025-02-07 01:20:51,647 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,648 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,649 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,650 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,650 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,651 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,652 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,652 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,653 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期结果'], skip_rows: None
+2025-02-07 01:20:51,660 - api_test - INFO - Testing login with admin/d5eFYHi!PNf3Bk~
+2025-02-07 01:20:51,661 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:52,822 - api_test - INFO - Response: 400
+2025-02-07 01:20:52,823 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:52,823 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:20:53,079 - api_test - INFO - Testing login with     /d5eFYHi!PNf4Bk~
+2025-02-07 01:20:53,080 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:53,661 - api_test - INFO - Response: 400
+2025-02-07 01:20:53,661 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:53,661 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:20:53,673 - api_test - INFO - Testing login with 11/d5eFYHi!PNf5Bk~
+2025-02-07 01:20:53,673 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:54,249 - api_test - INFO - Response: 400
+2025-02-07 01:20:54,249 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:54,250 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:20:54,282 - api_test - INFO - Testing login with 3nU17FmDUJbOnBnZDTLcSsNThY7z43J4TE8JYbUgqyG97QkmVoWoCwqlKgDgFq3pD/d5eFYHi!PNf6Bk~
+2025-02-07 01:20:54,282 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:54,847 - api_test - INFO - Response: 400
+2025-02-07 01:20:54,848 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:54,848 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:20:54,860 - api_test - INFO - Testing login with   /d5eFYHi!PNf7Bk~
+2025-02-07 01:20:54,861 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:55,413 - api_test - INFO - Response: 400
+2025-02-07 01:20:55,414 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:55,414 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:20:55,424 - api_test - INFO - Testing login with admin/123
+2025-02-07 01:20:55,425 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:55,984 - api_test - INFO - Response: 400
+2025-02-07 01:20:55,986 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:55,986 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:20:55,996 - api_test - INFO - Testing login with 111/111
+2025-02-07 01:20:55,996 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:57,165 - api_test - INFO - Response: 400
+2025-02-07 01:20:57,166 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:57,166 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:20:57,183 - api_test - INFO - Testing login with admin/1234
+2025-02-07 01:20:57,184 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:57,735 - api_test - INFO - Response: 400
+2025-02-07 01:20:57,735 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:57,735 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:20:57,746 - api_test - INFO - Testing login with admin/53APng01zzkCGGjWSiLQTrcJoF77HCalS
+2025-02-07 01:20:57,746 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:20:58,344 - api_test - INFO - Response: 400
+2025-02-07 01:20:58,345 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:20:58,345 - api_test - INFO - 响应状态码: 400
