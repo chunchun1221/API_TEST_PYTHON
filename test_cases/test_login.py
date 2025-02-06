@@ -13,7 +13,7 @@ def client():
 @allure.feature("登录接口")
 class TestLogin:
     # 读取 Excel 数据
-    data = ExcelUtil().read_excel(sheet_name='Login', use_cols=['账号名', '密码', '预期结果'])
+    data = ExcelUtil().read_excel(sheet_name='Login', use_cols=['账号名', '密码', '预期码'])
     all_case = []
     for row in data:
         all_case.append(row)

@@ -303,3 +303,59 @@
 2025-02-07 01:20:58,344 - api_test - INFO - Response: 400
 2025-02-07 01:20:58,345 - api_test - ERROR - Request failed with status code {"error":"user not found"}
 2025-02-07 01:20:58,345 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:40,818 - api_test - INFO - 文件路径为空, 将使用默认路径
+2025-02-07 01:29:40,819 - api_test - INFO - 默认文件路径为: D:\projects\API_autotest\data\casedata.xlsx
+2025-02-07 01:29:41,193 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,194 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,194 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,196 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,196 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,197 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,197 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,198 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,198 - api_test - INFO - 读取excel成功, sheet_name: Login, use_cols: ['账号名', '密码', '预期码'], skip_rows: None
+2025-02-07 01:29:41,206 - api_test - INFO - Testing login with admin/d5eFYHi!PNf3Bk~
+2025-02-07 01:29:41,206 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:42,296 - api_test - INFO - Response: 400
+2025-02-07 01:29:42,297 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:42,298 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:42,581 - api_test - INFO - Testing login with     /d5eFYHi!PNf4Bk~
+2025-02-07 01:29:42,581 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:43,119 - api_test - INFO - Response: 400
+2025-02-07 01:29:43,120 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:43,120 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:43,125 - api_test - INFO - Testing login with 11/d5eFYHi!PNf5Bk~
+2025-02-07 01:29:43,126 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:43,684 - api_test - INFO - Response: 400
+2025-02-07 01:29:43,685 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:43,685 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:43,690 - api_test - INFO - Testing login with 3nU17FmDUJbOnBnZDTLcSsNThY7z43J4TE8JYbUgqyG97QkmVoWoCwqlKgDgFq3pD/d5eFYHi!PNf6Bk~
+2025-02-07 01:29:43,691 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:44,305 - api_test - INFO - Response: 400
+2025-02-07 01:29:44,306 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:44,306 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:44,314 - api_test - INFO - Testing login with   /d5eFYHi!PNf7Bk~
+2025-02-07 01:29:44,315 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:44,912 - api_test - INFO - Response: 400
+2025-02-07 01:29:44,912 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:44,912 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:44,918 - api_test - INFO - Testing login with admin/123
+2025-02-07 01:29:44,919 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:45,864 - api_test - INFO - Response: 400
+2025-02-07 01:29:45,864 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:45,864 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:45,870 - api_test - INFO - Testing login with 111/111
+2025-02-07 01:29:45,870 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:46,418 - api_test - INFO - Response: 400
+2025-02-07 01:29:46,418 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:46,419 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:46,425 - api_test - INFO - Testing login with admin/1234
+2025-02-07 01:29:46,426 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:47,328 - api_test - INFO - Response: 400
+2025-02-07 01:29:47,328 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:47,329 - api_test - INFO - 响应状态码: 400
+2025-02-07 01:29:47,358 - api_test - INFO - Testing login with admin/53APng01zzkCGGjWSiLQTrcJoF77HCalS
+2025-02-07 01:29:47,358 - api_test - INFO - Request: POST https://reqres.in/api/login
+2025-02-07 01:29:47,931 - api_test - INFO - Response: 400
+2025-02-07 01:29:47,931 - api_test - ERROR - Request failed with status code {"error":"user not found"}
+2025-02-07 01:29:47,932 - api_test - INFO - 响应状态码: 400
