@@ -3,10 +3,10 @@ name: API Tests
 on:
   push:
     branches:
-      - main  # 在 main 分支推送时触发
+      - master  # 在 master 分支推送时触发
   pull_request:
     branches:
-      - main  # 在向 main 分支提 PR 时触发
+      - master  # 在向 master 分支提 PR 时触发
 
 jobs:
   test:
