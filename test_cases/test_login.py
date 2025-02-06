@@ -10,13 +10,16 @@ def client():
     client.session.close()
 
 
-@allure.feature("登录接口")
+@allure.feature("登录模块")
 class TestLogin:
+
     # 读取 Excel 数据
     data = ExcelUtil().read_excel(sheet_name='Login', use_cols=['账号名', '密码', '预期码'])
     all_case = []
     for row in data:
         all_case.append(row)
+    @allure.story("登录接口")‘
+
 
     @pytest.mark.parametrize("username, password, assert_message", all_case)
     def test_login(self, client, username, password, assert_message):
