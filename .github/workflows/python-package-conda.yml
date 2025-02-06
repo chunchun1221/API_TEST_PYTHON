@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - master  # 在向 master 分支提 PR 时触发
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   test:
@@ -15,11 +16,11 @@ jobs:
     steps:
       # 1. 检出代码
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 2. 设置 Python 环境
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.9"  # 指定 Python 版本
 
@@ -42,7 +43,7 @@ jobs:
 
       # 6. 上传 Allure 报告为 Artifact
       - name: Upload Allure report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: ./reports/allure_report
