@@ -8,17 +8,6 @@
 
 ---
 
-# 接口自动化测试框架
-
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
-[![Pytest](https://img.shields.io/badge/Pytest-6.2%2B-green?logo=pytest)](https://docs.pytest.org/)
-[![Allure Report](https://img.shields.io/badge/Allure-Report-orange?logo=allure)](https://docs.qameta.io/allure/)
-[![License MIT](https://img.shields.io/badge/License-MIT-red)](LICENSE)
-
-基于 Python 的全功能接口自动化测试框架，支持数据驱动、Mock 服务、性能压测和 CI/CD 集成，生产级测试解决方案。
-
----
-
 ## ✨ 核心特性
 - **四层架构**：配置/工具/用例/数据完全解耦
 - **多数据源驱动**：Excel/CSV/YAML/MySQL 测试数据支持
