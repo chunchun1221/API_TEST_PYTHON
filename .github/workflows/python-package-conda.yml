@@ -33,8 +33,11 @@ jobs:
       # 4. 安装 Allure 命令行工具
       - name: Install Allure command line
         run: |
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository ppa:qameta/allure
           sudo apt-get update
-          sudo apt-get install -y allure
+          sudo apt-get install allure
+
 
       # 5. 运行测试
       - name: Run tests
