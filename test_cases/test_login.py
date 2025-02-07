@@ -18,7 +18,7 @@ class TestLogin:
     all_case = []
     for row in data:
         all_case.append(row)
-    @allure.story("登录接口")‘
+    @allure.story("登录接口")
 
 
     @pytest.mark.parametrize("username, password, assert_message", all_case)
