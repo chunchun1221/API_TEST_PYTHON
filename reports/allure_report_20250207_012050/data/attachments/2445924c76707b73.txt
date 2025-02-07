@@ -1,0 +1,4 @@
+INFO     api_test:test_login.py:27 Testing login with admin/123
+INFO     api_test:http_requests.py:23 Request: POST https://reqres.in/api/login
+INFO     api_test:http_requests.py:26 Response: 400
+ERROR    api_test:http_requests.py:28 Request failed with status code {"error":"user not found"}

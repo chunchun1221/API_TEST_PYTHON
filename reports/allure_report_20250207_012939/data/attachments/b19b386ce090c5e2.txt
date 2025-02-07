@@ -1,0 +1,5 @@
+[32m2025-02-07 01:20:54 - api_test - INFO - Testing login with 3nU17FmDUJbOnBnZDTLcSsNThY7z43J4TE8JYbUgqyG97QkmVoWoCwqlKgDgFq3pD/d5eFYHi!PNf6Bk~[0m
+[32m2025-02-07 01:20:54 - api_test - INFO - Request: POST https://reqres.in/api/login[0m
+[32m2025-02-07 01:20:54 - api_test - INFO - Response: 400[0m
+[31m2025-02-07 01:20:54 - api_test - ERROR - Request failed with status code {"error":"user not found"}[0m
+[32m2025-02-07 01:20:54 - api_test - INFO - 响应状态码: 400[0m

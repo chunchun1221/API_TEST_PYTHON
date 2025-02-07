@@ -1,0 +1,5 @@
+INFO     api_test:test_login.py:41 Testing login with 3nU17FmDUJbOnBnZDTLcSsNThY7z43J4TE8JYbUgqyG97QkmVoWoCwqlKgDgFq3pD/d5eFYHi!PNf6Bk~
+INFO     api_test:http_requests.py:23 Request: POST https://reqres.in/api/login
+INFO     api_test:http_requests.py:26 Response: 400
+ERROR    api_test:http_requests.py:28 Request failed with status code {"error":"user not found"}
+INFO     api_test:test_login.py:46 响应状态码: 400

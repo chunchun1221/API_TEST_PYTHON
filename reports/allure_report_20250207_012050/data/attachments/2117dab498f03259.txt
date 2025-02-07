@@ -1,0 +1,4 @@
+[32m2025-02-07 01:13:30 - api_test - INFO - Testing login with admin/d5eFYHi!PNf3Bk~[0m
+[32m2025-02-07 01:13:30 - api_test - INFO - Request: POST https://reqres.in/api/login[0m
+[32m2025-02-07 01:13:32 - api_test - INFO - Response: 400[0m
+[31m2025-02-07 01:13:32 - api_test - ERROR - Request failed with status code {"error":"user not found"}[0m

@@ -3,57 +3,34 @@ name: API Tests
 on:
   push:
     branches:
-      - master
+      - master  # 在 master 分支推送时触发
   pull_request:
     branches:
-      - master
-  workflow_dispatch:
+      - master  # 在向 master 分支提 PR 时触发
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境
 
     steps:
+      # 1. 检出代码
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2. 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.9"
+          python-version: "3.9"  # 指定 Python 版本
 
-      - name: Cache Python dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-python-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-python-
-
+      # 3. 安装依赖
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r config/requirements.txt  # 更新为 config 目录中的路径
 
-      - name: Install Allure command line
-        run: |
-          npm install -g allure-commandline --save-dev
-
-      - name: Verify Allure installation
-        run: |
-          allure --version
-
+      # 4. 运行测试
       - name: Run tests
         run: |
-          pytest -v --alluredir=./reports/allure_results
-
-      - name: Generate Allure report
-        if: always()
-        run: |
-          allure generate ./reports/allure_results -o ./reports/allure_report --clean
-
-      - name: Upload Allure report
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: ./reports/allure_report/*
+          pytest --maxfail=1 --disable-warnings -q  # 设置运行测试时的选项，最大失败次数为 1，禁用警告输出，简洁输出
