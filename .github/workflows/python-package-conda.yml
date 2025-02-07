@@ -2,57 +2,60 @@ name: API Tests
 
 on:
   push:
+    # Run tests on pushes to the master branch
     branches:
-      - master  # 在 master 分支推送时触发
+      - master
+    paths:
+      - '**.py'
   pull_request:
     branches:
-      - master  # 在向 master 分支提 PR 时触发
-  workflow_dispatch:  # 允许手动触发
+      - master
+    paths:
+      - '**.py'
+  workflow_dispatch:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境
+    runs-on: ubuntu-latest
 
     steps:
-      # 1. 检出代码
+      - # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.9"  # 指定 Python 版本
+          python-version: "3.9"
 
-      # 3. 安装依赖
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-python-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-python-
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # 确保 requirements.txt 在仓库根目录下
+          pip install -r requirements.txt
 
-      # 4. 安装 Allure 命令行工具
       - name: Install Allure command line
         run: |
-          sudo apt-get install -y software-properties-common
-          sudo add-apt-repository ppa:qameta/allure
-          sudo apt-get update
-          sudo apt-get install allure
+          npm install -g allure-commandline --save-dev
 
-
-      # 5. 运行测试
       - name: Run tests
         run: |
-          pytest --alluredir=./reports/allure_results
+          pytest -v --alluredir=./reports/allure_results
 
-      # 6. 生成 Allure 报告
       - name: Generate Allure report
-        if: always()  # 即使测试失败也生成报告
+        if: always()
         run: |
           allure generate ./reports/allure_results -o ./reports/allure_report --clean
 
-      # 7. 上传 Allure 报告为 Artifact
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: ./reports/allure_report
+          path: ./reports/allure_report/*
