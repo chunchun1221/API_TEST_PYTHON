@@ -1,0 +1,7 @@
+requests==2.32.3
+pytest==7.1.1
+jsonschema==2.6.0
+allure-pytest==2.13.5
+pytest-httpserver  # 可选，如果需要模拟HTTP请求
+requests-mock  # 可选，用于模拟请求
+pytest-cov  # 可选，用于测试覆盖率
