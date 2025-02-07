@@ -1,27 +1,25 @@
 import pytest
-from untils.http_requests import HTTPClient
 from untils.logger import logger
-from untils.excel import ExcelUtil
 import allure
-@pytest.fixture(scope='class')
-def client():
-    client = HTTPClient()
-    yield client
-    client.session.close()
+from untils.excel import ExcelUtil
+
+
+def load_login_data():
+    excel_util = ExcelUtil()
+    sheet_name = 'Login'
+    use_cols = ['账号名', '密码', '预期码']
+    data_generator = excel_util.read_excel(sheet_name=sheet_name, use_cols=use_cols)
+    all_case = []
+    for row in data_generator:
+        all_case.append(row)
+    return all_case
+
 
 
 @allure.feature("登录模块")
 class TestLogin:
-
-    # 读取 Excel 数据
-    data = ExcelUtil().read_excel(sheet_name='Login', use_cols=['账号名', '密码', '预期码'])
-    all_case = []
-    for row in data:
-        all_case.append(row)
     @allure.story("登录接口")
-
-
-    @pytest.mark.parametrize("username, password, assert_message", all_case)
+    @pytest.mark.parametrize("username, password, assert_message", load_login_data())
     def test_login(self, client, username, password, assert_message):
         """
         测试登录接口
@@ -53,6 +51,9 @@ class TestLogin:
             assert response.status_code == assert_message, f"预期状态码: {assert_message}, 实际状态码: {response.status_code}"
             if response.status_code == 200:
                 assert "token" in response.json(), "响应中未找到 token"
+
+
+
 if __name__ == "__main__":
     pytest.main()
 

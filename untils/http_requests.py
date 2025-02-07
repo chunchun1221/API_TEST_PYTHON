@@ -44,4 +44,8 @@ if __name__ == "__main__":
     print(login_repose.text)
     user_repose=client.get('/users')
     print(user_repose.text)
+    users_info=user_repose.json().get('data',[])
+    user_ids=[user_info['id'] for user_info in users_info]
+
+
 
