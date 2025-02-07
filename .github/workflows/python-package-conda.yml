@@ -2,16 +2,11 @@ name: API Tests
 
 on:
   push:
-    # Run tests on pushes to the master branch
     branches:
       - master
-    paths:
-      - '**.py'
   pull_request:
     branches:
       - master
-    paths:
-      - '**.py'
   workflow_dispatch:
 
 jobs:
@@ -19,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -44,6 +38,10 @@ jobs:
       - name: Install Allure command line
         run: |
           npm install -g allure-commandline --save-dev
+
+      - name: Verify Allure installation
+        run: |
+          allure --version
 
       - name: Run tests
         run: |
