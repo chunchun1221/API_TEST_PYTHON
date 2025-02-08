@@ -30,7 +30,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r config/requirements.txt  # 更新为 config 目录中的路径
           pip install allure_pytest # 安装allure_pytest插件
-          pip install allure-python-adapter # 安装allure-python-adapter插件
+          
           
 
       # 4. 运行测试
