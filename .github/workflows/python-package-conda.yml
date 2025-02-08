@@ -2,75 +2,71 @@ name: API Tests
 
 on:
   push:
-    branches:
-      - master  # 在 master 分支推送时触发
+    branches: [ master ]
   pull_request:
-    branches:
-      - master  # 在向 master 分支提 PR 时触发
-  workflow_dispatch:  # 允许手动触发
+    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境
+    runs-on: ubuntu-latest
 
     steps:
-      # 1. 检出代码
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.9"  # 指定 Python 版本
+          python-version: "3.9"
 
-      # 3. 安装依赖
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('config/requirements.txt') }}
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r config/requirements.txt  # 更新为 config 目录中的路径
-          pip install allure_pytest # 安装allure_pytest插件
+          pip install -r config/requirements.txt
+          pip install allure_pytest
 
-      # 4. 运行测试
       - name: Run tests
         run: |
-          pytest --maxfail=1 --disable-warnings -q --alluredir=allure-results  # 生成 allure 结果
+          pytest --maxfail=1 --disable-warnings -q --alluredir=allure-results
 
-
-      # 5. 安装allure命令
       - name: Install allure commandline
         run: |
+          sudo rm -rf /usr/local/allure allure-2.32.2*
           curl -o allure-2.32.2.tgz -L https://github.com/allure-framework/allure2/releases/download/2.32.2/allure-2.32.2.tgz
-          file allure-2.32.2.tgz # 检查文件类型
-          ls -lh allure-2.32.2.tgz  # 检查文件是否下载成功
+          echo "EXPECTED_CHECKSUM=your_sha256_checksum_here" >> $GITHUB_ENV
+          echo "$(shasum -a 256 allure-2.32.2.tgz)" | grep -q ${{ env.EXPECTED_CHECKSUM }}
           tar -zxvf allure-2.32.2.tgz
           sudo mv allure-2.32.2 /usr/local/allure
-          sudo ln -s /usr/local/allure/bin/allure /usr/bin/allure
+          sudo ln -sf /usr/local/allure/bin/allure /usr/bin/allure
 
-
-      # 6. 生成allure报告
       - name: Generate allure report
         run: |
-          allure generate --clean allure-results -o allure-report # 生成allure报告
+          allure generate --clean allure-results -o allure-report
 
-      # 7. 上传allure报告到GitHub
       - name: Upload allure report to GitHub
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: allure-report
 
-      # 8. 飞书通知（新增步骤）
       - name: Notify Feishu
-        timeout-minutes: 3 # 超时设置
-        retry-on-error: true # 失败重试
-        if: always()  # 无论成功失败都发送通知
+        if: always()
+        timeout-minutes: 3
+        retry-on-error: true
+        retries: 2
         env:
-          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}  # 从Secrets读取Webhook
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  # 运行详情页
-          REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts  # 报告归档页
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
+          BRANCH_OR_PR: ${{ github.event_name == 'pull_request' && format('PR #{}', github.event.number) || github.ref_name }}
         run: |
-          # 构造富文本消息
           MESSAGE=$(cat <<EOF
           {
             "msg_type": "interactive",
@@ -78,7 +74,7 @@ jobs:
               "elements": [{
                 "tag": "div",
                 "text": {
-                  "content": "📊 **测试结果通知**\n\n🚀 工作流：${{ github.workflow }}\n📂 分支：${{ github.ref }}\n👤 触发者：${{ github.actor }}\n🔄 运行ID：${{ github.run_id }}\n✅ 状态：${{ job.status }}",
+                  "content": "📊 **测试结果通知**\n\n🚀 工作流：${{ github.workflow }}\n📂 分支/PR：${{ env.BRANCH_OR_PR }}\n👤 触发者：${{ github.actor }}\n🔄 运行ID：${{ github.run_id }}\n✅ 状态：${{ job.status }}",
                   "tag": "lark_md"
                 }
               },{
@@ -96,17 +92,13 @@ jobs:
               }],
               "header": {
                 "title": {
-                  "content": "${{ job.status == 'success' ? '✅ 测试通过' : '❌ 测试失败' }}",
+                  "content": "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}",
                   "tag": "plain_text"
                 },
-                "template": "${{ job.status == 'success' ? 'green' : 'red' }}"
+                "template": "${{ job.status == 'success' && 'green' || 'red' }}"
               }
             }
           }
           EOF
           )
-
-          # 发送请求
-          curl -X POST $FEISHU_WEBHOOK \
-            -H "Content-Type: application/json" \
-            -d "$MESSAGE"
+          curl -X POST $FEISHU_WEBHOOK -H "Content-Type: application/json" -d "$MESSAGE"
