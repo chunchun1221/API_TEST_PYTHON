@@ -55,6 +55,7 @@ jobs:
 
       # 7. 上传allure报告到GitHub
       - name: Upload allure report to GitHub
+        id: upload
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
@@ -66,7 +67,7 @@ jobs:
         env:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}
           RUN_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          REPORT_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ needs.upload.outputs.artifact-id }}"
+          REPORT_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.upload.outputs.artifact-id }}"
           BRANCH_OR_PR: "${{ github.event_name == 'pull_request' && format('PR #{0}', github.event.number) || github.ref_name }}"
           NOTIFICATION_TITLE: "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}"
           TEMPLATE_COLOR: "${{ job.status == 'success' && 'green' || 'red' }}"
