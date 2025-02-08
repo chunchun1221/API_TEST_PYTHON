@@ -92,7 +92,7 @@ jobs:
                 {
                   "tag": "div",
                   "text": {
-                    "content": "🔗 [查看测试报告](${REPORT_URL})",
+                    "content": "🔗 [查看测试报告](${env.REPORT_URL})",
                     "tag": "lark_md"
                   }
                 }
