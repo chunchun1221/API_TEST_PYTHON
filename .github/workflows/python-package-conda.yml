@@ -36,7 +36,8 @@ jobs:
       # 4. 运行测试
       - name: Run tests
         run: |
-          pytest --maxfail=1 --disable-warnings -q  # 设置运行测试时的选项，最大失败次数为 1，禁用警告输出，简洁输出
+          pytest --maxfail=1 --disable-warnings -q --alluredir=allure-results  # 生成 allure 结果
+
 
       # 5. 安装allure命令
       - name: Install allure commandline
@@ -52,8 +53,8 @@ jobs:
       # 6. 生成allure报告
       - name: Generate allure report
         run: |
-          allure generate --clean allure-results
-          allure open allure-report
+          allure generate --clean allure-results # 生成allure报告
+          allure open allure-report # 打开allure报告
 
       # 7. 上传allure报告到GitHub
       - name: Upload allure report to GitHub
