@@ -88,8 +88,16 @@ jobs:
                     "content": "📊 **测试结果通知**\n\n🚀 工作流: ${{ github.workflow }}\n📂 分支/PR: ${{ env.BRANCH_OR_PR }}\n👤 触发者: ${{ github.actor }}\n🔄 运行ID: ${{ github.run_id }}\n✅ 状态: ${{ job.status }}",
                     "tag": "lark_md"
                   }
+                },
+                {
+                  "tag": "div",
+                  "text": {
+                    "content": "🔗 [查看测试报告](${REPORT_URL})",
+                    "tag": "lark_md"
+                  }
                 }
               ]
             }
           }'
           curl -X POST "$FEISHU_WEBHOOK" -H "Content-Type: application/json" -d "$MESSAGE"
+      
