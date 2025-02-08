@@ -30,8 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r config/requirements.txt  # 更新为 config 目录中的路径
           pip install allure_pytest # 安装allure_pytest插件
-          
-          
 
       # 4. 运行测试
       - name: Run tests
@@ -61,3 +59,54 @@ jobs:
         with:
           name: allure-report
           path: allure-report
+
+      # 8. 飞书通知（新增步骤）
+      - name: Notify Feishu
+        timeout-minutes: 3 # 超时设置
+        retry-on-error: true # 失败重试
+        if: always()  # 无论成功失败都发送通知
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}  # 从Secrets读取Webhook
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}  # 运行详情页
+          REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts  # 报告归档页
+        run: |
+          # 构造富文本消息
+          MESSAGE=$(cat <<EOF
+          {
+            "msg_type": "interactive",
+            "card": {
+              "elements": [{
+                "tag": "div",
+                "text": {
+                  "content": "📊 **测试结果通知**\n\n🚀 工作流：${{ github.workflow }}\n📂 分支：${{ github.ref }}\n👤 触发者：${{ github.actor }}\n🔄 运行ID：${{ github.run_id }}\n✅ 状态：${{ job.status }}",
+                  "tag": "lark_md"
+                }
+              },{
+                "actions": [{
+                  "tag": "button",
+                  "text": {"content": "查看运行详情","tag": "lark_md"},
+                  "url": "$RUN_URL",
+                  "type": "primary"
+                },{
+                  "tag": "button",
+                  "text": {"content": "下载测试报告","tag": "lark_md"},
+                  "url": "$REPORT_URL"
+                }],
+                "tag": "action"
+              }],
+              "header": {
+                "title": {
+                  "content": "${{ job.status == 'success' ? '✅ 测试通过' : '❌ 测试失败' }}",
+                  "tag": "plain_text"
+                },
+                "template": "${{ job.status == 'success' ? 'green' : 'red' }}"
+              }
+            }
+          }
+          EOF
+          )
+
+          # 发送请求
+          curl -X POST $FEISHU_WEBHOOK \
+            -H "Content-Type: application/json" \
+            -d "$MESSAGE"
