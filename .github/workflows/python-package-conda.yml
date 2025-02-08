@@ -61,6 +61,13 @@ jobs:
           name: allure-report
           path: allure-report
 
+      # 8. 部署allure报告到GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-master@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports/allure-report  # 确保路径匹配
+
       # 飞书通知步骤（修复后）
       - name: Notify Feishu
         if: always()
@@ -68,6 +75,7 @@ jobs:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}
           RUN_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           REPORT_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.upload.outputs.artifact-id }}"
+          REPORT_URL_1: https://chunchun1221.github.io/API_TEST_PYTHON/reports/allure-report/
           BRANCH_OR_PR: "${{ github.event_name == 'pull_request' && format('PR #{0}', github.event.number) || github.ref_name }}"
           NOTIFICATION_TITLE: "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}"
           TEMPLATE_COLOR: "${{ job.status == 'success' && 'green' || 'red' }}"
@@ -99,7 +107,7 @@ jobs:
                         "content": "查看测试报告",
                         "tag": "plain_text"
                       },
-                      "url": "${{ env.REPORT_URL }}",
+                      "url": "${{ env.REPORT_URL_1 }}",
                       "type": "primary"
                     }
                   ]

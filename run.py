@@ -18,8 +18,8 @@ if __name__ == "__main__":
         "test_cases/"  # 测试用例目录
     ])
 
-    # 生成 Allure 报告
-    allure_report_dir = os.path.join(BASE_DIR, 'reports', f'allure_report_{timestamp}')
+    # 生成 Allure 报告（固定目录名）
+    allure_report_dir = os.path.join(BASE_DIR, 'reports', 'allure-report')
     os.system(f"allure generate {report_dir} -o {allure_report_dir} --clean")
 
     # 打开 Allure 报告
