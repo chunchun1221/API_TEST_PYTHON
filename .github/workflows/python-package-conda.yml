@@ -63,7 +63,7 @@ jobs:
 
       # 8. 部署allure报告到GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-master@v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./reports/allure-report  # 确保路径匹配
