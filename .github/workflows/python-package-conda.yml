@@ -26,12 +26,10 @@ jobs:
 
       # 3. 安装依赖
       - name: Install dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/pip
-            venv/
-          key: ${{ runner.os }}-pip-${{ hashFiles('config/requirements.txt') }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r config/requirements.txt  # 更新为 config 目录中的路径
+          pip install allure_pytest # 安装allure_pytest插件
 
       # 4. 运行测试
       - name: Run tests
@@ -67,31 +65,45 @@ jobs:
         if: always()
         env:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}
-          RUN_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          REPORT_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts"
-          BRANCH_OR_PR: "${{ github.event_name == 'pull_request' && format('PR #{0}', github.event.number) || github.ref_name }}"
-          NOTIFICATION_TITLE: "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}"
-          TEMPLATE_COLOR: "${{ job.status == 'success' && 'green' || 'red' }}"
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ARTIFACTS_LIST_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
+          ALLURE_REPORT_URL: https://chunchun1221.github.io/API_TEST_PYTHON/allure-report/index.html  # 替换为你的 Pages URL
         run: |
           MESSAGE='{
             "msg_type": "interactive",
             "card": {
-              "header": {
-                "title": {
-                  "content": "${{ env.NOTIFICATION_TITLE }}",
-                  "tag": "plain_text"
-                },
-                "template": "${{ env.TEMPLATE_COLOR }}"
-              },
               "elements": [
                 {
                   "tag": "div",
                   "text": {
-                    "content": "📊 **测试结果通知**\n\n🚀 工作流: ${{ github.workflow }}\n📂 分支/PR: ${{ env.BRANCH_OR_PR }}\n👤 触发者: ${{ github.actor }}\n🔄 运行ID: ${{ github.run_id }}\n✅ 状态: ${{ job.status }}",
+                    "content": "📊 **测试结果通知**\n\n🚀 工作流：${{ github.workflow }}\n📥 报告入口：[Allure Report]($ALLURE_REPORT_URL)",
                     "tag": "lark_md"
                   }
+                },
+                {
+                  "actions": [
+                    {
+                      "tag": "button",
+                      "text": {"content": "运行详情", "tag": "lark_md"},
+                      "url": "$RUN_URL",
+                      "type": "primary"
+                    },
+                    {
+                      "tag": "button",
+                      "text": {"content": "下载报告", "tag": "lark_md"},
+                      "url": "$ARTIFACTS_LIST_URL"
+                    }
+                  ],
+                  "tag": "action"
                 }
-              ]
+              ],
+              "header": {
+                "title": {
+                  "content": "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}",
+                  "tag": "plain_text"
+                },
+                "template": "${{ job.status == 'success' && 'green' || 'red' }}"
+              }
             }
           }'
           curl -X POST "$FEISHU_WEBHOOK" -H "Content-Type: application/json" -d "$MESSAGE"
