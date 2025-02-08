@@ -41,10 +41,12 @@ jobs:
       # 5. 安装allure命令
       - name: Install allure commandline
         run: |
-          curl -o allure-2.13.9.tgz -L https://github.com/allure-framework/allure2/releases/download/allure-2.13.9/allure-2.13.9.tgz
-          tar -zxvf allure-2.13.9.tgz
-          sudo mv allure-2.13.9 /usr/local/allure
+          curl -o allure-2.32.2.tgz -L https://github.com/allure-framework/allure2/releases/download/allure-2.32.2/allure-2.32.2.tgz
+          ls -lh allure-2.32.2.tgz  # 检查文件是否下载成功
+          tar -zxvf allure-2.32.2.tgz
+          sudo mv allure-2.32.2 /usr/local/allure
           sudo ln -s /usr/local/allure/bin/allure /usr/bin/allure
+
 
       # 6. 生成allure报告
       - name: Generate allure report
