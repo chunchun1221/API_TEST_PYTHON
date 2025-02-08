@@ -66,16 +66,16 @@ jobs:
         env:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          REPORT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
+          BRANCH_OR_PR: ${{ github.event_name == 'pull_request' && format('PR #{}', github.event.number) || github.ref_name }}
         run: |
-          MESSAGE=$(cat <<EOF
-          {
+          # 使用单引号包裹 JSON 主体，避免变量冲突
+          MESSAGE='{
             "msg_type": "interactive",
             "card": {
               "elements": [{
                 "tag": "div",
                 "text": {
-                  "content": "📊 **测试结果通知**\n\n🚀 工作流：${{ github.workflow }}\n📂 分支：${{ github.ref }}\n👤 触发者：${{ github.actor }}\n🔄 运行ID：${{ github.run_id }}\n✅ 状态：${{ job.status }}",
+                  "content": "📊 **测试结果通知**\n\n🚀 工作流：${{ github.workflow }}\n📂 分支/PR：$BRANCH_OR_PR\n👤 触发者：${{ github.actor }}\n🔄 运行ID：${{ github.run_id }}\n✅ 状态：${{ job.status }}",
                   "tag": "lark_md"
                 }
               },{
@@ -84,22 +84,19 @@ jobs:
                   "text": {"content": "查看运行详情","tag": "lark_md"},
                   "url": "$RUN_URL",
                   "type": "primary"
-                },{
-                  "tag": "button",
-                  "text": {"content": "下载测试报告","tag": "lark_md"},
-                  "url": "$REPORT_URL"
                 }],
                 "tag": "action"
               }],
               "header": {
                 "title": {
-                  "content": "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}",  # 修复条件表达式
+                  "content": "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}",
                   "tag": "plain_text"
                 },
                 "template": "${{ job.status == 'success' && 'green' || 'red' }}"
               }
             }
-          }
-          EOF
-          )
-          curl -X POST $FEISHU_WEBHOOK -H "Content-Type: application/json" -d "$MESSAGE"
+          }'
+          # 发送请求
+          curl -X POST "$FEISHU_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d "$MESSAGE"
