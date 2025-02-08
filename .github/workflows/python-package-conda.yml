@@ -84,10 +84,10 @@ jobs:
             "card": {
               "header": {
                 "title": {
-                  "content": "${{ job.status == ''success'' && ''✅ 测试通过'' || ''❌ 测试失败'' }}",
+                  "content": "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}",
                   "tag": "plain_text"
                 },
-                "template": "${{ job.status == ''success'' && ''green'' || ''red'' }}"
+                "template": "${{ job.status == 'success' && 'green' || 'red'}}"
               },
               "elements": [
                 {
