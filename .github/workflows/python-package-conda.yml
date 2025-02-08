@@ -41,7 +41,7 @@ jobs:
       # 5. 安装allure命令
       - name: Install allure commandline
         run: |
-          curl -o allure-2.32.2.tgz -L https://github.com/allure-framework/allure2/releases/download/allure-2.32.2/allure-2.32.2.tgz
+          curl -o allure-2.32.2.tgz -L https://github.com/allure-framework/allure2/releases/download/2.32.2/allure-2.32.2.tgz
           file allure-2.32.2.tgz # 检查文件类型
           ls -lh allure-2.32.2.tgz  # 检查文件是否下载成功
           tar -zxvf allure-2.32.2.tgz
