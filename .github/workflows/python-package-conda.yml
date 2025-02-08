@@ -29,8 +29,32 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r config/requirements.txt  # 更新为 config 目录中的路径
+          pip install allure_pytest # 安装allure_pytest插件
+          pip install allure-python-adapter # 安装allure-python-adapter插件
+          
 
       # 4. 运行测试
       - name: Run tests
         run: |
           pytest --maxfail=1 --disable-warnings -q  # 设置运行测试时的选项，最大失败次数为 1，禁用警告输出，简洁输出
+
+      # 5. 安装allure命令
+      - name: Install allure commandline
+        run: |
+          curl -o allure-2.13.9.tgz -L https://github.com/allure-framework/allure2/releases/download/allure-2.13.9/allure-2.13.9.tgz
+          tar -zxvf allure-2.13.9.tgz
+          sudo mv allure-2.13.9 /usr/local/allure
+          sudo ln -s /usr/local/allure/bin/allure /usr/bin/allure
+
+      # 6. 生成allure报告
+      - name: Generate allure report
+        run: |
+          allure generate --clean allure-results
+          allure open allure-report
+
+      # 7. 上传allure报告到GitHub
+      - name: Upload allure report to GitHub
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
