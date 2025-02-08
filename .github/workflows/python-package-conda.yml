@@ -54,7 +54,7 @@ jobs:
 
       # 7. 上传allure报告到GitHub
       - name: Upload allure report to GitHub
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: allure-report
