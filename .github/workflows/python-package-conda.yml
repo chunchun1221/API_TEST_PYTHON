@@ -103,4 +103,3 @@ jobs:
           EOF
           )
           curl -X POST $FEISHU_WEBHOOK -H "Content-Type: application/json" -d "$MESSAGE"
-        retries: 3
