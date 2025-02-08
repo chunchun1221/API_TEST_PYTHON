@@ -76,18 +76,22 @@ jobs:
         env:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          REPORT_URL: https://chunchun1221.github.io/API_TEST_PYTHON/  # GitHub Pages 地址
+          REPORT_URL: https://chunchun1221.github.io/API_TEST_PYTHON/  # 确保此处是你的 Pages URL
+          # 将复杂表达式拆分为环境变量
+          NOTIFICATION_TITLE: ${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}
+          TEMPLATE_COLOR: ${{ job.status == 'success' && 'green' || 'red' }}
           BRANCH_INFO: ${{ github.event_name == 'pull_request' && format('PR #{}', github.event.number) || github.ref_name }}
         run: |
+          # 使用单引号包裹 JSON 主体，内部单引号用双单引号转义
           MESSAGE='{
             "msg_type": "interactive",
             "card": {
               "header": {
                 "title": {
-                  "content": "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}",
+                  "content": "${{ env.NOTIFICATION_TITLE }}",
                   "tag": "plain_text"
                 },
-                "template": "${{ job.status == 'success' && 'green' || 'red' }}"
+                "template": "${{ env.TEMPLATE_COLOR }}"
               },
               "elements": [
                 {
