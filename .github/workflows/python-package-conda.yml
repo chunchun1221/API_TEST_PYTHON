@@ -60,6 +60,8 @@ jobs:
           name: allure-report
           path: allure-report
 
+
+
       # 飞书通知步骤（修复后）
       - name: Notify Feishu
         if: always()
@@ -67,7 +69,7 @@ jobs:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           ARTIFACTS_LIST_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts
-          ALLURE_REPORT_URL: https://chunchun1221.github.io/API_TEST_PYTHON/reports/index.html  # 替换为你的 Pages URL
+          ALLURE_REPORT_URL: https://github.com/chunchun1221/API_TEST_PYTHON/actions/runs/${{ github.run_id }}/artifacts/<artifact_name>  # 替换为你的 Pages URL
         run: |
           MESSAGE='{
             "msg_type": "interactive",
