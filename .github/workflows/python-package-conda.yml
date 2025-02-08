@@ -90,14 +90,20 @@ jobs:
                   }
                 },
                 {
-                  "tag": "div",
-                  "text": {
-                    "content": "🔗 [查看测试报告](${env.REPORT_URL})",
-                    "tag": "lark_md"
-                  }
+                  "tag": "action",
+                  "actions": [
+                    {
+                      "tag": "button",
+                      "text": {
+                        "content": "查看测试报告",
+                        "tag": "plain_text"
+                      },
+                      "url": "${{ env.REPORT_URL }}",
+                      "type": "primary"
+                    }
+                  ]
                 }
               ]
             }
           }'
           curl -X POST "$FEISHU_WEBHOOK" -H "Content-Type: application/json" -d "$MESSAGE"
-      
