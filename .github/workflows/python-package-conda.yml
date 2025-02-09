@@ -70,7 +70,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: allure-report
+          path: reports/allure-report
 
       # 验证报告目录
       - name: Validate report directory
