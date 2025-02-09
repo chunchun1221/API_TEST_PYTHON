@@ -1,0 +1,16 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","2","test_get_data","test_cases","Sun Feb 09 14:51:44 UTC 2025","passed","Sun Feb 09 14:51:44 UTC 2025","","test_mock","",""
+"
+        测试通过 user_id 获取单个用户信息
+        ","73","test_user_id","test_cases","Sun Feb 09 14:51:44 UTC 2025","passed","Sun Feb 09 14:51:44 UTC 2025","TestUser","test_user","",""
+"","1","test_post_data","test_cases","Sun Feb 09 14:51:44 UTC 2025","passed","Sun Feb 09 14:51:44 UTC 2025","","test_mock","",""
+"
+        测试用户接口，确保能正确获取用户信息
+        ","0","test_user","test_cases","Sun Feb 09 14:51:44 UTC 2025","passed","Sun Feb 09 14:51:44 UTC 2025","TestUser","test_user","",""
+"
+        测试登录接口
+        :param client: HTTP 客户端
+        :param username: 账号名
+        :param password: 密码
+        :param assert_message: 预期结果
+        ","0","test_login[username0-password0-assert_message0]","test_cases","Sun Feb 09 14:51:44 UTC 2025","skipped","Sun Feb 09 14:51:44 UTC 2025","TestLogin","test_login","",""

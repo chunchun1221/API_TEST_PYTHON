@@ -1,0 +1,1 @@
+{"total":4,"items":[{"uid":"93e6d5aa633956525794a4e27d81e14b","name":"用户信息模块","statistic":{"failed":0,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":2}},{"uid":"6958045a481574bf02bb11ef07a7047b","name":"登录模块","statistic":{"failed":0,"broken":0,"skipped":1,"passed":0,"unknown":0,"total":1}}]}
