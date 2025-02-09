@@ -57,7 +57,12 @@ jobs:
       # 6. 生成allure报告
       - name: Generate allure report
         run: |
-          allure generate --clean allure-results -o allure-report # 生成allure报告
+          # 强制创建目标目录
+          mkdir -p reports/allure-report
+          # 生成报告到正确路径
+          allure generate allure-results -o reports/allure-report --clean
+          # 调试：列出生成的文件
+          ls -R reports/allure-report
 
       # 7. 上传allure报告到GitHub
       - name: Upload allure report to GitHub
@@ -67,9 +72,13 @@ jobs:
           name: allure-report
           path: allure-report
 
-      # 检查allure报告是否存在
-      - name: Check if allure report exists
-        run: ls -R reports/allure-report
+      # 验证报告目录
+      - name: Validate report directory
+        run: |
+          if [ ! -d "reports/allure-report" ]; then
+            echo "❌ Error: reports/allure-report directory does not exist!"
+            exit 1
+          fi
 
       # 8. 部署allure报告到GitHub Pages
       - name: Deploy to GitHub Pages
