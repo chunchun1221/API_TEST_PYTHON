@@ -2,95 +2,130 @@ name: API Tests
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master  # 在 master 分支推送时触发
   pull_request:
-    branches: [ master ]
-  workflow_dispatch:
+    branches:
+      - master  # 在向 master 分支提 PR 时触发
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境
 
     steps:
+      # 1. 检出代码
       - name: Checkout code
         uses: actions/checkout@v4
 
+
+      - name: Set up Git config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # 2. 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.9"
+          python-version: "3.9"  # 指定 Python 版本
 
+      # 3. 安装依赖
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r config/requirements.txt
-          pip install allure_pytest
+          pip install -r config/requirements.txt  # 更新为 config 目录中的路径
+          pip install allure_pytest # 安装allure_pytest插件
 
+      # 4. 运行测试
       - name: Run tests
         run: |
-          pytest --maxfail=1 --disable-warnings -q --alluredir=allure-results
+          pytest --maxfail=1 --disable-warnings -q --alluredir=allure-results  # 生成 allure 结果
 
+
+      # 5. 安装allure命令
       - name: Install allure commandline
         run: |
-          sudo apt-get install -y openjdk-11-jre
-          ALLURE_VERSION=2.32.2
-          curl -LO https://github.com/allure-framework/allure2/releases/download/$ALLURE_VERSION/allure-$ALLURE_VERSION.tgz
-          tar -zxvf allure-$ALLURE_VERSION.tgz
-          sudo mv allure-$ALLURE_VERSION /opt/allure
-          sudo ln -sf /opt/allure/bin/allure /usr/bin/allure
+          curl -o allure-2.32.2.tgz -L https://github.com/allure-framework/allure2/releases/download/2.32.2/allure-2.32.2.tgz
+          file allure-2.32.2.tgz # 检查文件类型
+          ls -lh allure-2.32.2.tgz  # 检查文件是否下载成功
+          tar -zxvf allure-2.32.2.tgz
+          sudo mv allure-2.32.2 /usr/local/allure
+          sudo ln -s /usr/local/allure/bin/allure /usr/bin/allure
 
+
+      # 6. 生成allure报告
       - name: Generate allure report
         run: |
-          mkdir -p reports/allure-report
-          allure generate allure-results -o reports/allure-report --clean
+          allure generate --clean allure-results -o allure-report # 生成allure报告
 
-      - name: Check report files
+      # 7. 上传allure报告到GitHub
+      - name: Upload allure report to GitHub
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+
+      # 检查allure报告是否存在
+      - name: Check if allure report exists
         run: ls -R reports/allure-report
 
+      # 8. 部署allure报告到GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./reports/allure-report
-          force_orphan: true
-          keep_files: false
+          publish_dir: ./reports/allure-report  # 确保路径匹配
+          force_orphan: true  # 强制覆盖历史记录
+          keep_files: false   # 不保留旧文件
+          enable_jekyll: false # 禁用 Jekyll 处理
 
+
+
+      # 飞书通知步骤（修复后）
       - name: Notify Feishu
         if: always()
         env:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK_URL }}
           RUN_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          REPORT_URL: "https://chunchun1221.github.io/API_TEST_PYTHON/"  # 直接使用 Pages 地址
+          REPORT_URL: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.upload.outputs.artifact-id }}"
+          REPORT_URL_1: https://chunchun1221.github.io/API_TEST_PYTHON/reports/allure-report/
           BRANCH_OR_PR: "${{ github.event_name == 'pull_request' && format('PR #{0}', github.event.number) || github.ref_name }}"
+          NOTIFICATION_TITLE: "${{ job.status == 'success' && '✅ 测试通过' || '❌ 测试失败' }}"
+          TEMPLATE_COLOR: "${{ job.status == 'success' && 'green' || 'red' }}"
         run: |
           MESSAGE='{
             "msg_type": "interactive",
             "card": {
               "header": {
                 "title": {
-                  "content": "${{ job.status == ''success'' && ''✅ 测试通过'' || ''❌ 测试失败'' }}",
+                  "content": "${{ env.NOTIFICATION_TITLE }}",
                   "tag": "plain_text"
                 },
-                "template": "${{ job.status == ''success'' && ''green'' || ''red'' }}"
+                "template": "${{ env.TEMPLATE_COLOR }}"
               },
               "elements": [
                 {
                   "tag": "div",
                   "text": {
-                    "content": "📊 **测试结果通知**\n\n🚀 工作流: ${{ github.workflow }}\n📂 分支/PR: ${{ env.BRANCH_OR_PR }}\n👤 触发者: ${{ github.actor }}",
+                    "content": "📊 **测试结果通知**\n\n🚀 工作流: ${{ github.workflow }}\n📂 分支/PR: ${{ env.BRANCH_OR_PR }}\n👤 触发者: ${{ github.actor }}\n🔄 运行ID: ${{ github.run_id }}\n✅ 状态: ${{ job.status }}",
                     "tag": "lark_md"
                   }
                 },
                 {
+                  "tag": "action",
                   "actions": [
                     {
                       "tag": "button",
-                      "text": {"content": "查看报告", "tag": "plain_text"},
-                      "url": "${{ env.REPORT_URL }}",
+                      "text": {
+                        "content": "查看测试报告",
+                        "tag": "plain_text"
+                      },
+                      "url": "${{ env.REPORT_URL_1 }}",
                       "type": "primary"
                     }
-                  ],
-                  "tag": "action"
+                  ]
                 }
               ]
             }
